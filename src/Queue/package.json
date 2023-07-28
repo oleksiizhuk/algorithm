@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "lint": "eslint . --ext .ts",
-    "lint-and-fix": "eslint . --ext .ts --fix",
+    "lint": "eslint  --ext .ts",
+    "lint-and-fix": "eslint  --ext .ts --fix",
     "start": "npx tsc-watch --onsuccess \"node index.js\"",
     "start-ext": "npx tsc-watch --onsuccess \"node ./src/extend/person.js\"",
     "start-poly": "npx tsc-watch --onsuccess \"node ./src/poly/polymorphism.js\"",

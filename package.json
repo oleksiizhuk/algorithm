@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix",
+    "start:lindked": "npx tsc-watch --onsuccess \\\"node src/LinkedList/index.js\\\"",
+    "start-ext": "npx tsc-watch --onsuccess \"node ./src/extend/person.js\""
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "eslint": "^8.45.0"
+  },
+  "dependencies": {
+    "eslint-watch": "^8.0.0",
+    "jest": "^29.6.2"
+  }
+}
