@@ -9,7 +9,8 @@ export interface ILinkedList<T> {
   insertAtEnd(data: T): Node<T>
   // deleteNode(node: Node<T>): void
   traverse():T[]
-  search(comparator: (data: T) => boolean): Node<T> | null
+  findByCallback(callback: (data: T) => boolean): Node<T> | null
+  searchByRecurse(comparator: (data: T) => boolean): Node<T> | null
   size(): number
 
   //additional methods
@@ -121,7 +122,21 @@ export class LinkedList<T> implements ILinkedList<T> {
     return this.traverse().length
   }
 
-  public search(comparator: (data: T) => boolean): Node<T> | null {
+  findByCallback(callback: (data: T) => boolean): Node<T> | null {
+    if(!this.head) {
+      return null
+    }
+    let current: Node<T> | null = this.head
+    while (current) {
+      if(callback(current.data)){
+        return current
+      }
+      current = current.next
+    }
+    return null
+  }
+  public searchByRecurse(comparator: (data: T) => boolean): Node<T> | null {
+
     const checkNext = (node: Node<T>): Node<T> | null => {
       if (comparator(node.data)) {
         return node;
@@ -149,12 +164,13 @@ List.insertAtEnd(3)
 List.print() // 1 2 3
 console.log('traverse = ', List.traverse()); // [ 1, 2, 3 ]
 console.log('LinkedList size = ', List.size()); // 3
-const result = List.search((data) => data === 2);
+const result = List.searchByRecurse((data) => data === 2);
+const find = List.findByCallback((data) => data === 2);
 console.log('search = ', result?.data) // 2
+console.log('search = ', find?.data) // 2
 
 List.setHeadToEnd()
 console.log('getCurrentNode = ', List.getCurrentNode()?.data); // 3
-
 
 List.setHeadToStart()
 console.log('getCurrentNode = ' + List.getCurrentNode()?.data); // 1

@@ -22,8 +22,6 @@ have better cache locality as compared to linked lists.
 
 ![Linked List](./images/linked-list.jpeg)
 
-*Made with [okso.app](https://okso.app)*
-
 ## Pseudocode for Basic Operations
 
 ### Insert
