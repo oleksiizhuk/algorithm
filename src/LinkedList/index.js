@@ -97,7 +97,20 @@ class LinkedList {
     size() {
         return this.traverse().length;
     }
-    search(comparator) {
+    findByCallback(callback) {
+        if (!this.head) {
+            return null;
+        }
+        let current = this.head;
+        while (current) {
+            if (callback(current.data)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+    searchByRecurse(comparator) {
         const checkNext = (node) => {
             if (comparator(node.data)) {
                 return node;
@@ -122,8 +135,10 @@ List.insertAtEnd(3);
 List.print(); // 1 2 3
 console.log('traverse = ', List.traverse()); // [ 1, 2, 3 ]
 console.log('LinkedList size = ', List.size()); // 3
-const result = List.search((data) => data === 2);
+const result = List.searchByRecurse((data) => data === 2);
+const find = List.findByCallback((data) => data === 2);
 console.log('search = ', result === null || result === void 0 ? void 0 : result.data); // 2
+console.log('search = ', find === null || find === void 0 ? void 0 : find.data); // 2
 List.setHeadToEnd();
 console.log('getCurrentNode = ', (_a = List.getCurrentNode()) === null || _a === void 0 ? void 0 : _a.data); // 3
 List.setHeadToStart();
